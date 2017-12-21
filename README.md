@@ -1,6 +1,6 @@
 # Bittrex.js - API Wrapper
 
-![https://travis-ci.org/evanshortiss/bittrex-api](https://travis-ci.org/evanshortiss/bittrex-api.svg) [![npm version](https://badge.fury.io/js/bittrex-api.svg)](https://badge.fury.io/js/bittrex-api) [![https://coveralls.io/repos/github/evanshortiss/bittrex-api](https://coveralls.io/repos/github/evanshortiss/bittrex-api/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex-api?branch=master)
+![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/bittrex.js.svg)](https://badge.fury.io/js/bittrex.js) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 Lightweight JavaScript wrapper for the Bittrex API, written in TypeScript.
@@ -22,7 +22,7 @@ noted.
 This is not currently published on npm, but you can install from GitHub:
 
 ```
-npm install evanshortiss/bittrex-api
+npm install evanshortiss/bittrex.js
 ```
 
 You can replace `#master` with a tag or another branch of your choosing.
@@ -35,7 +35,7 @@ too.
 ```js
 'use strict'
 
-const Bittrex = require('bittrex-api')
+const Bittrex = require('bittrex.js')
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY GOES HERE',
@@ -98,21 +98,21 @@ potential to make this more streamlined in the future.
 Here are the steps:
 
 ```
-$ git clone git@github.com:evanshortiss/bittrex-api.git bittrex-api
-$ cd bittrex-api
+$ git clone git@github.com:evanshortiss/bittrex.js.git bittrex.js
+$ cd bittrex.js
 $ npm install
 $ npm run browserify
 ```
 
-This will produce a file at `dist/bittrex-api.js` that you can add to your
-project. You can `require('bittrex-api')` it, or access it via `window.Bittrex`.
+This will produce a file at `dist/bittrex.js.js` that you can add to your
+project. You can `require('bittrex.js')` it, or access it via `window.Bittrex`.
 
 ## TypeScript
 Since this module is written in TypeScript it works great in other TypeScript
 projects and offers intellisense in VSCode, even if you don't use TypeScript.
 
 ```ts
-import * as Bittrex from 'bittrex-api'
+import * as Bittrex from 'bittrex.js'
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY GOES HERE',
@@ -130,12 +130,12 @@ Debugging issues with
 
 Internally this module uses the `debug` module for logging. If you'd like to
 enable logging just run your program with the environment variable `DEBUG` set
-to `bittrex-api:*`.
+to `bittrex.js:*`.
 
 For example, on macOS or Linux you can run:
 
 ```
-$ DEBUG=bittrex-api:* node your-app.js
+$ DEBUG=bittrex.js:* node your-app.js
 ```
 
 ## API
@@ -146,7 +146,7 @@ This is only available for TypeScript users. Use these to interact with the
 types used by this module.
 
 ```ts
-import * as Bittrex from 'bittrex-api'
+import * as Bittrex from 'bittrex.js'
 
 // Ensure only Bittrex API currency Objects can be pushed to the array
 const tickers: Models.Currency = []
@@ -169,7 +169,7 @@ the `success` field in their response JSON is not set to `true`.
 Sample usage:
 
 ```ts
-import * as Bittrex from 'bittrex-api'
+import * as Bittrex from 'bittrex.js'
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY'
