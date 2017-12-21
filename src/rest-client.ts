@@ -79,7 +79,7 @@ export class RestClient {
 
     // If axios throws an error, e.g a timeout, we catch it and bubble up
     try {
-      result = await this.axios(requestOptions)
+      result = await this.axios.request(requestOptions)
     } catch (e) {
       throw new RestApiError(e)
     }

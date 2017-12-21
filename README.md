@@ -104,8 +104,8 @@ $ npm install
 $ npm run browserify
 ```
 
-This will produce a file at `dist/bittrex.js.js` that you can add to your
-project. You can `require('bittrex.js')` it, or access it via `window.Bittrex`.
+This will produce a file at `dist/bittrex.js` that you can add to your project.
+You can `require('bittrex.js')` it, or access it via `window.Bittrex`.
 
 ## TypeScript
 Since this module is written in TypeScript it works great in other TypeScript
@@ -126,8 +126,6 @@ async function getBalances () {
 ```
 
 ## Debugging / Logging
-Debugging issues with
-
 Internally this module uses the `debug` module for logging. If you'd like to
 enable logging just run your program with the environment variable `DEBUG` set
 to `bittrex.js:*`.
@@ -199,18 +197,17 @@ supports the following options:
 details, check the [Axios Docs](https://github.com/axios/axios#request-config)
 * [optional] apiVersion - Bittrex API version to target. Defaults to `v1.1`
 
-RestClient instance functions return Promises. This means they can be used with
-Async/Await.
+RestClient behaviours to be aware of:
 
-All instance functions return the `result` entry from Bittrex API responses to
-save you the trouble of typing `response.result`.
-
-If a request returns a non 200 response an error is thrown, so be sure to use
+1. RestClient instance functions return Promises. This means they can be used
+withAsync/Await.
+2. All instance functions return the `result` entry from Bittrex API responses
+to save you the trouble of typing `response.result`.
+3. If a request returns a non 200 response an error is thrown, so be sure to use
 `.catch()` function on promises and `try/catch` if using Async/Await.
-
-All of the following functions and the returned data types are detailed in the
-Bittrex API docs. For details of the types shown below visit the `src/models`
-folder in this repo.
+4. All of the following functions and the returned data types are detailed in
+the Bittrex API docs. For details of the types shown below visit the
+`src/models` folder in this repo.
 
 #### http(uri: string, options: AxiosRequestConfig): AxiosPromise
 Perform a HTTPS request to the Bittrex API. You should only provide the relative
