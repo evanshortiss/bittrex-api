@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "message": "",
+  "result": [
+    {
+      "OrderUuid": "fd97d393-e9b9-4dd1-9dbf-f288fc72a185",
+      "Exchange": "BTC-XLM",
+      "TimeStamp": "2014-07-09T04:01:00.667",
+      "OrderType": "LIMIT_BUY",
+      "Limit": 1e-8,
+      "Quantity": 100000,
+      "QuantityRemaining": 100000,
+      "Commission": 0,
+      "Price": 0,
+      "PricePerUnit": null,
+      "IsConditional": false,
+      "Condition": null,
+      "ConditionTarget": null,
+      "ImmediateOrCancel": false
+    }
+  ]
+}

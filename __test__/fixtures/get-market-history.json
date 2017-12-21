@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "result": [
+    {
+      "Id": 10313129,
+      "TimeStamp": "2017-12-19T21:12:01.683",
+      "Quantity": 43911.28,
+      "Price": 3.2e-7,
+      "Total": 0.0140516,
+      "FillType": "PARTIAL_FILL",
+      "OrderType": "SELL"
+    },
+    {
+      "Id": 10313126,
+      "TimeStamp": "2017-12-19T21:11:50.997",
+      "Quantity": 5592.58617188,
+      "Price": 3.2e-7,
+      "Total": 0.00178962,
+      "FillType": "PARTIAL_FILL",
+      "OrderType": "SELL"
+    }
+  ]
+}

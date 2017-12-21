@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "result": [
+    {
+      "Currency": "BTC",
+      "CurrencyLong": "Bitcoin",
+      "MinConfirmation": 2,
+      "TxFee": 0.001,
+      "IsActive": true,
+      "CoinType": "BITCOIN",
+      "BaseAddress": "1N52wHoVR79PMDishab2XmRHsbekCdGquK",
+      "Notice": null
+    },
+    {
+      "Currency": "LTC",
+      "CurrencyLong": "Litecoin",
+      "MinConfirmation": 6,
+      "TxFee": 0.01,
+      "IsActive": true,
+      "CoinType": "BITCOIN",
+      "BaseAddress": "LhyLNfBkoKshT7R8Pce6vkB9T2cP2o84hx",
+      "Notice": null
+    },
+    {
+      "Currency": "DOGE",
+      "CurrencyLong": "Dogecoin",
+      "MinConfirmation": 6,
+      "TxFee": 2,
+      "IsActive": true,
+      "CoinType": "BITCOIN",
+      "BaseAddress": "D9GqmkGCpgtnXP7xMD78v9xfqeDkqBZBMT",
+      "Notice": null
+    }
+  ]
+}

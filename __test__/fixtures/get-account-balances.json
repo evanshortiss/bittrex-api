@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "result": [
+    {
+      "Currency": "BTC",
+      "Balance": 5,
+      "Available": 2.5,
+      "Pending": 0,
+      "CryptoAddress": "FAKE_BTC_ADDRESS"
+    },
+    {
+      "Currency": "ETH",
+      "Balance": 10,
+      "Available": 10,
+      "Pending": 0,
+      "CryptoAddress": "FAKE_ETH_ADDRESS"
+    },
+    {
+      "Currency": "LTC",
+      "Balance": 100,
+      "Available": 100,
+      "Pending": 0,
+      "CryptoAddress": null
+    }
+  ]
+}

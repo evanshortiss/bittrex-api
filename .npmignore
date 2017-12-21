@@ -1,0 +1,8 @@
+# These are ignored by Git, but we want to publish to npm
+!*.js
+!*.js.map
+!*.d.ts
+
+# Don't publish typescript files
+*.ts
+tsconfig.json

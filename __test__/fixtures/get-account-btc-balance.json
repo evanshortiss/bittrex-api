@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "result": {
+    "Currency": "BTC",
+    "Balance": 5,
+    "Available": 3,
+    "Pending": 0,
+    "CryptoAddress": "FAKE_BTC_ADDRESS"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "result": [
+    {
+      "MarketName": "BTC-1ST",
+      "High": 0.00004862,
+      "Low": 0.00003921,
+      "Volume": 12098827.98901271,
+      "Last": 0.0000447,
+      "BaseVolume": 527.9783083,
+      "TimeStamp": "2017-12-19T21:19:23.17",
+      "Bid": 0.00004466,
+      "Ask": 0.0000447,
+      "OpenBuyOrders": 591,
+      "OpenSellOrders": 4246,
+      "PrevDay": 0.00003945,
+      "Created": "2017-06-06T01:22:35.727"
+    },
+    {
+      "MarketName": "BTC-2GIVE",
+      "High": 9.8e-7,
+      "Low": 8.1e-7,
+      "Volume": 25452834.24763432,
+      "Last": 8.4e-7,
+      "BaseVolume": 22.37948283,
+      "TimeStamp": "2017-12-19T21:19:12.14",
+      "Bid": 8.4e-7,
+      "Ask": 8.5e-7,
+      "OpenBuyOrders": 312,
+      "OpenSellOrders": 1438,
+      "PrevDay": 8.3e-7,
+      "Created": "2016-05-16T06:44:15.287"
+    },
+    {
+      "MarketName": "BTC-ABY",
+      "High": 8.5e-7,
+      "Low": 7.7e-7,
+      "Volume": 22440108.45542121,
+      "Last": 7.8e-7,
+      "BaseVolume": 18.2243588,
+      "TimeStamp": "2017-12-19T21:19:14.263",
+      "Bid": 7.8e-7,
+      "Ask": 7.9e-7,
+      "OpenBuyOrders": 394,
+      "OpenSellOrders": 2133,
+      "PrevDay": 8.5e-7,
+      "Created": "2014-10-31T01:43:25.743"
+    }
+  ]
+}

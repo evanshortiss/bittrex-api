@@ -1,0 +1,74 @@
+{
+  "name": "bittrex.js",
+  "version": "0.1.0",
+  "description": "No nonsense Bittrex API wrapper for Node.js and Browsers, written in TypeScript.",
+  "main": "bittrex.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "tsc && jest",
+    "test-debug": "DEBUG=bittrex-api:* npm test",
+    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
+    "example-ts": "tsc && node examples/typescript/ts-example.js",
+    "example-js": "node examples/typescript/ts-example.js",
+    "prepublish": "tsc",
+    "browserify": "tsc && browserify -e bittrex.js -o dist/bittrex.js -s Bittrex"
+  },
+  "browser": {
+    "crypto": "crypto-browserify"
+  },
+  "keywords": [
+    "bittrex",
+    "typescript",
+    "bitcoin",
+    "blockchain",
+    "api",
+    "ts",
+    "browser",
+    "web browser",
+    "web",
+    "client"
+  ],
+  "author": "Evan Shortiss <evanshortiss@gmail.com> (http://evanshortiss.com/)",
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node",
+    "mapCoverage": true,
+    "cache": false,
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {
+    "axios": "~0.17.1",
+    "crypto-browserify": "~3.12.0"
+  },
+  "devDependencies": {
+    "@types/debug": "0.0.30",
+    "@types/jest": "~21.1.8",
+    "@types/nock": "~9.1.0",
+    "@types/node": "~8.5.1",
+    "@types/url-join": "~0.8.2",
+    "browserify": "~14.5.0",
+    "nock": "~9.1.4",
+    "ts-jest": "~21.2.4",
+    "typescript": "~2.6.2"
+  }
+}
