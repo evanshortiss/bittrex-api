@@ -1,6 +1,6 @@
 # Bittrex.js - Bittrex API Wrapper
 
-![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/%40evanshortiss%2Fbittrex.js.svg)](https://badge.fury.io/js/@evanshortiss/bittrex.js) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
+![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/%40evanshortiss%2Fbittrex.js.svg)](https://badge.fury.io/js/%40evanshortiss%2Fbittrex.js.svg) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 Lightweight JavaScript wrapper for the Bittrex API, written in TypeScript.
@@ -113,7 +113,7 @@ Since this module is written in TypeScript it works great in other TypeScript
 projects and offers intellisense in VSCode, even if you don't use TypeScript.
 
 ```ts
-import * as Bittrex from 'bittrex.js'
+import * as Bittrex from '@evanshortiss/bittrex.js'
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY GOES HERE',
@@ -145,7 +145,7 @@ This is only available for TypeScript users. Use these to interact with the
 types used by this module.
 
 ```ts
-import * as Bittrex from 'bittrex.js'
+import * as Bittrex from '@evanshortiss/bittrex.js'
 
 // Ensure only Bittrex API currency Objects can be pushed to the array
 const tickers: Models.Currency = []
@@ -168,7 +168,7 @@ the `success` field in their response JSON is not set to `true`.
 Sample usage:
 
 ```ts
-import * as Bittrex from 'bittrex.js'
+import * as Bittrex from '@evanshortiss/bittrex.js'
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY'
