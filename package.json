@@ -1,8 +1,9 @@
 {
   "name": "@evanshortiss/bittrex.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "No nonsense Bittrex API wrapper for Node.js and Browsers, written in TypeScript",
   "main": "bittrex.js",
+  "typings": "bittrex.d.ts",
   "scripts": {
     "tsc": "tsc",
     "test": "tsc && jest",
