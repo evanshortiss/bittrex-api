@@ -1,6 +1,6 @@
 # Bittrex.js - Bittrex API Wrapper
 
-![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/bittrex.js.svg)](https://badge.fury.io/js/bittrex.js) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
+![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/@evanshortiss/bittrex.js.svg)](https://badge.fury.io/js/@evanshortiss/bittrex.js) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 Lightweight JavaScript wrapper for the Bittrex API, written in TypeScript.
