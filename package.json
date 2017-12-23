@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "browserify": "~14.5.0",
+    "coveralls": "~2.13.3",
     "jest": "~22.0.3",
     "nock": "~9.1.4",
     "ts-jest": "~21.2.4",
