@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "test": "tsc && jest",
     "test-debug": "DEBUG=bittrex.js:* npm test",
-    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "example-ts": "tsc && node examples/typescript/ts-example.js",
     "example-js": "node examples/typescript/ts-example.js",
     "prepublish": "tsc",
