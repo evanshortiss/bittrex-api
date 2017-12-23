@@ -1,31 +1,30 @@
-# Bittrex.js - API Wrapper
+# Bittrex.js - Bittrex API Wrapper
 
 ![https://travis-ci.org/evanshortiss/bittrex.js](https://travis-ci.org/evanshortiss/bittrex.js.svg) [![npm version](https://badge.fury.io/js/bittrex.js.svg)](https://badge.fury.io/js/bittrex.js) [![https://coveralls.io/repos/github/evanshortiss/bittrex.js](https://coveralls.io/repos/github/evanshortiss/bittrex.js/badge.svg?branch=master)](https://coveralls.io/github/evanshortiss/bittrex.js?branch=master)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 Lightweight JavaScript wrapper for the Bittrex API, written in TypeScript.
 
-* Support for the Bittrex REST API
-* Compatible with Node.js and Web Browsers.
+* Support for the Bittrex REST API.
+* Compatible with Node.js (v5 and above) and Web Browsers.
+* First class TypeScript support.
 * Solid documentation.
-* High code coverage and testing.
+* High code and test coverage.
 * Support for Promises and Async/Await.
+* Uses the native `crypto` module when used with Node.js to greatly improve
+performance of HMAC generation vs. other modules.
 * Straightforward. Doesn't alter the responses from Bittrex unless otherwise
 noted.
-* Lightweight wrapper. No unusual Classes or frameworks are forced on you.
+* Lightweight wrapper. No wrapper Classes or large frameworks are forced on you.
 
 
 ## Node.js Quickstart
 
 ### Install
 
-This is not currently published on npm, but you can install from GitHub:
-
 ```
-npm install evanshortiss/bittrex.js
+npm install bittrex.js --save
 ```
-
-You can replace `#master` with a tag or another branch of your choosing.
 
 ### Example
 
@@ -52,7 +51,7 @@ function getBalances () {
 
 ## API Credentials
 To use this library you'll need to get an API Key and Secret from the Settings
-section of your Bittrex account.
+screen of your Bittrex account.
 
 You can read the specific details for API credentials on the
 [Bittrex Developers Guide](https://bittrex.com/home/api). It's just a single
@@ -60,9 +59,10 @@ paragraph - read it. It's important to understand the permission levels.
 
 ## Response Formats
 All responses from this module are true to the original format specified in the
-[Bittrex API](https://bittrex.com/home/api) docs - no magic or odd stuff here!
+[Bittrex API](https://bittrex.com/home/api) docs - no magic, classes, or odd
+stuff here!
 
-For example, the `/public/getticker` endpoint returns this format:
+As an example, the `/public/getticker` endpoint returns this format:
 
 ```json
 {
@@ -197,19 +197,24 @@ supports the following options:
 details, check the [Axios Docs](https://github.com/axios/axios#request-config)
 * [optional] apiVersion - Bittrex API version to target. Defaults to `v1.1`
 
-RestClient behaviours to be aware of:
+RestClient behaviours:
 
 1. RestClient instance functions return Promises. This means they can be used
-withAsync/Await.
-2. All instance functions return the `result` entry from Bittrex API responses
-to save you the trouble of typing `response.result`.
-3. If a request returns a non 200 response an error is thrown, so be sure to use
+with Async/Await.
+2. Instance functions return the `result` entry from Bittrex API responses
+to save you the trouble of continuously typing `response.result`.
+3. All function names are camelcase versions of the corresponding Bitrrex API
+endpoints.
+4. If a request returns a non 200 response an error is thrown, so be sure to use
 `.catch()` function on promises and `try/catch` if using Async/Await.
-4. All of the following functions and the returned data types are detailed in
-the Bittrex API docs. For details of the types shown below visit the
-`src/models` folder in this repo.
 
-#### http(uri: string, options: AxiosRequestConfig): AxiosPromise
+All of the following functions and the returned data types are detailed in the
+Bittrex API docs. For details of the types shown below visit the `src/models`
+folder in this repo and the Bittrex API docs.
+
+Optional parameters are denoted using the `?` character.
+
+#### http(uri: string, options?: AxiosRequestConfig): AxiosPromise
 Perform a HTTPS request to the Bittrex API. You should only provide the relative
 path, e.g `/public/getmarkets` since this library will create the fully formed
 url.
@@ -225,8 +230,7 @@ client.http('/public/getmarkets', { timeout: 5000 })
 ```
 
 You probably won't need to use this much, but if you need to make a custom
-request to the Bittrex API this will do the trick.
-
+request to the Bittrex API this will allow you to do so.
 
 #### getMarkets(): Promise<Market[]>
 Returns a result like that shown below. This is the `result` field from the
@@ -262,7 +266,7 @@ client.getMarkets()
   .catch(errorHandler)
 ```
 
-#### getMarketSummary(tickerA: string, tickerB: string): Promise<MarketSummaryEntry>
+#### getMarketSummary(tickerA: string, tickerB: string): Promise\<MarketSummaryEntry>
 Returns a summary for the given pair. `tickerA` and `tickerB` are combined to
 form a pair, e.g `BTC-LTC` or similar.
 
@@ -270,11 +274,33 @@ The Bittrex API actually returns an Array for this call, but this function
 returns an Object since the Array returned by Bittrex always contains just one
 entry.
 
+```js
+client.getMarketSummary('btc', 'ltc')
+  .then((summary) => {
+    // Summary will be an Object like so:
+    // {
+    //   "MarketName": "BTC-LTC",
+    //   "High": 0.02,
+    //   "Low": 0.01790001,
+    //   "Volume": 320125.18706995,
+    //   "Last": 0.01966999,
+    //   "BaseVolume": 6117.00242171,
+    //   "TimeStamp": "2017-12-19T21:21:56.16",
+    //   "Bid": 0.0196,
+    //   "Ask": 0.01966999,
+    //   "OpenBuyOrders": 5598,
+    //   "OpenSellOrders": 4891,
+    //   "PrevDay": 0.01812,
+    //   "Created": "2014-02-13T00:00:00"
+    // }
+  })
+```
+
 #### getMarketSummaries(): Promise<MarketSummaryEntry[]>
 
 #### getCurrencies(): Promise<Currency[]>
 
-#### getTicker(ticker: string): Promise<Ticker>
+#### getTicker(ticker: string): Promise\<Ticker>
 
 #### getOrderBook(tickerA: string, tickerB: string, type: 'BUY'|'SELL'|'BOTH'): Promise<OrderBookEntry[]>
 
@@ -282,7 +308,7 @@ entry.
 
 #### getBalances(): Promise<AccountBalanceEntry[]>
 
-#### getBalance(currency: string): Promise<AccountBalanceEntry>
+#### getBalance(currency: string): Promise\<AccountBalanceEntry>
 
 #### getOrderHistory(): Promise<AccountOrderEntry[]>
 
@@ -290,20 +316,24 @@ entry.
 
 #### getDepositHistory(currency?: string): Promise<AccountOrderEntry[]>
 
-#### getDepositAddress(currency: string): Promise<AccountDepositAddress>
+#### getDepositAddress(currency: string): Promise\<AccountDepositAddress>
 
-#### getOrder(uuid: string): Promise<AccountOrderEntry>
+#### getOrder(uuid: string): Promise\<AccountOrderEntry>
 
-#### withdraw(params: WithdrawlParams): Promise<WithdrawlResult>
+#### withdraw(params: WithdrawlParams): Promise\<WithdrawlResult>
 
-#### getWithdrawlHistory(currency?: string): Promise<WithdrawlHistoryEntry>
+#### getWithdrawlHistory(currency?: string): Promise<WithdrawlHistoryEntry[]>
 
-#### buyLimit (tickerA: string, tickerB: string, quantity: string, rate: string): Promise<BuyLimitResult>
+#### buyLimit (tickerA: string, tickerB: string, quantity: string, rate: string): Promise\<BuyLimitResult>
 
-#### sellLimit (tickerA: string, tickerB: string, quantity: string, rate: string): Promise<SellLimitResult>
+#### sellLimit (tickerA: string, tickerB: string, quantity: string, rate: string): Promise\<SellLimitResult>
 
-#### cancelOrder (uuid: string): Promise<void>
+#### cancelOrder (uuid: string): Promise\<void>
 
 #### getOpenOrders(): Promise<OpenOrder[]>
 
 #### getOpenOrders(tickerA: string, tickerB: string): Promise<OpenOrder[]>
+
+## TODOs
+* Test use with Browserify within another project.
+* Look at improved browser support if necessary.
