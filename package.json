@@ -1,5 +1,5 @@
 {
-  "name": "bittrex.js",
+  "name": "@evanshortiss/bittrex.js",
   "version": "0.1.0",
   "description": "No nonsense Bittrex API wrapper for Node.js and Browsers, written in TypeScript",
   "main": "bittrex.js",
