@@ -1,4 +1,4 @@
-import { RestClient, RestApiError } from '../bittrex'
+import { RestClient, Errors } from '../bittrex'
 import * as assert from 'assert'
 import * as nock from 'nock'
 
@@ -51,9 +51,9 @@ describe('http error handling', () => {
       const balanceBtc = await client.http('/missing/endpoint')
       assert(false, 'API call should have failed');
     } catch (e) {
-      expect(e).toBeInstanceOf(RestApiError)
+      expect(e).toBeInstanceOf(Errors.BittrexHttpError)
       expect(e.toString()).toEqual(
-        'BittrexRestApiError: received status code 404 and text "null"'
+        'HTTPError: received http 404 from bittrex with message "null"'
       )
     }
   })
@@ -64,16 +64,22 @@ describe('http error handling', () => {
       .query(defaultQuery)
       .reply(200, {
         success: false,
-        message: 'something went wrong'
+        message: 'INVALID MARKET'
       })
 
     try {
       const balanceBtc = await client.http('/valid/endpoint')
       assert(false, 'API call should have failed');
     } catch (e) {
-      expect(e).toBeInstanceOf(RestApiError)
+      expect(e).toBeInstanceOf(Errors.BittrexRestApiError)
+
+      // Provide access to the response.message property
+      expect((e as Errors.BittrexRestApiError).bittexMessage).toEqual(
+        'INVALID MARKET'
+      )
+
       expect(e.toString()).toEqual(
-        'BittrexRestApiError: body.success was false with message "something went wrong"'
+        'BittrexRestApiError: bittrex returned "INVALID MARKET" error'
       )
     }
   })
@@ -95,7 +101,7 @@ describe('http error handling', () => {
       })
       assert(false, 'API call should have timed out');
     } catch (e) {
-      expect(e).toBeInstanceOf(RestApiError)
+      expect(e).toBeInstanceOf(Errors.BittrexHttpError)
       expect(e.toString()).toContain(`timeout of ${timeout}ms exceeded`)
     }
   })

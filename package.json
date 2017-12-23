@@ -44,10 +44,10 @@
     },
     "coverageThreshold": {
       "global": {
-        "branches": 95,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 92,
+        "functions": 98,
+        "lines": 98,
+        "statements": 98
       }
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",

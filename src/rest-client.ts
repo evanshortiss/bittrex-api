@@ -4,7 +4,7 @@ import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
 import { getNonce, getHmac } from "./utils"
 import { getLogger } from './log'
 import { stringify } from 'querystring'
-import { RestApiError } from './errors'
+import { BittrexRestApiError, BittrexHttpError } from './errors'
 
 const log = getLogger('rest-client')
 
@@ -81,15 +81,17 @@ export class RestClient {
     try {
       result = await this.axios.request(requestOptions)
     } catch (e) {
-      throw new RestApiError(e)
+      throw new BittrexHttpError(e)
     }
 
     // Erorr handling here is a little odd due to the way Bittrex handles
     // responses. Bittrex, why you no use HTTP status codes!?
 
     if (result.status !== 200) {
-      throw new RestApiError(
-        `received status code ${result.status} and text "${result.statusText}"`
+      throw new BittrexHttpError(
+        `received http ${result.status} from bittrex with message "${result.statusText}"`,
+        result.statusText,
+        result.status
       )
     } else  {
       const body: Models.ApiResponse = result.data
@@ -97,8 +99,8 @@ export class RestClient {
       if (body.success) {
         return result
       } else {
-        throw new RestApiError(
-          `body.success was false with message "${body.message}"`
+        throw new BittrexRestApiError(
+          body.message
         )
       }
     }
