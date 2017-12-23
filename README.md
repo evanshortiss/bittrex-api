@@ -23,7 +23,7 @@ noted.
 ### Install
 
 ```
-npm install bittrex.js --save
+npm install @evanshortiss/bittrex.js --save
 ```
 
 ### Example
