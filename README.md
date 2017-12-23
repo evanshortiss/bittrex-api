@@ -34,7 +34,7 @@ too.
 ```js
 'use strict'
 
-const Bittrex = require('bittrex.js')
+const Bittrex = require('@evanshortiss/bittrex.js')
 
 const client = new Bittrex.RestClient({
   apikey: 'YOUR KEY GOES HERE',
@@ -105,7 +105,8 @@ $ npm run browserify
 ```
 
 This will produce a file at `dist/bittrex.js` that you can add to your project.
-You can `require('bittrex.js')` it, or access it via `window.Bittrex`.
+You can `require('@evanshortiss/bittrex.js')` it, or access it via
+`window.Bittrex`.
 
 ## TypeScript
 Since this module is written in TypeScript it works great in other TypeScript
