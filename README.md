@@ -160,10 +160,51 @@ const btc = await client.getTicker('btc')
 tickers.push(btc)
 ```
 
-### RestApiError
-This is a subclass of the standard JavaScript Error that will be thrown if the
-Bittrex API returns an unexpected status code (anything besides HTTP 200), or if
-the `success` field in their response JSON is not set to `true`.
+### Errors.BittrexHttpError
+An Error subclass that's used when the Bittrex API returns a non 200 status or
+an error such as a timeout is thrown.
+
+The following extra properties are defined in the case of a non HTTP 200 status
+code. If a timeout (ETIMEDOUT) or refused connnection (ECONNREFUSED) error
+occurs then these properties won't exist.
+
+* bittexMessage - A string, the HTTP body returned by the Bittrex API
+* statusCode - A number, the status code returned from the Bittrex API.
+
+```js
+const Bittrex = require('@evanshortiss/bittrex.js')
+
+const client = new Bittrex.RestClient({
+  apikey: 'YOUR KEY'
+  apisecret: 'YOUR SECRET'
+})
+
+client.getMarkets()
+  .then((markets) => doSomethingWithMarkets(markets))
+  .then((result) => doSomethingElse(result))
+  .catch((e) => {
+    if (e instanceof Bittrex.Errors.BittrexHttpError) {
+      // If the error is a non 200 status then these are defined
+      console.log(e.bittexMessage)
+      console.log(e.statusCode)
+    } else {
+      console.log('some other type of error occurred', e)
+    }
+  })
+```
+
+### Errors.BittrexRestApiError
+An Error subclass that's used when the `success` field in the response from the
+Bittrex API is not `true`, e.g
+
+```json
+{
+  "success": false,
+  "message": "INVALID_MARKET"
+}
+```
+
+Contains a `bittexMessage` property that should describe the error.
 
 Sample usage:
 
@@ -179,8 +220,9 @@ client.getMarkets()
   .then((markets) => doSomethingWithMarkets(markets))
   .then((result) => doSomethingElse(result))
   .catch((e) => {
-    if (e instanceof Bittrex.RestApiError) {
-      console.log('bittrex api returned an error', e)
+    if (e instanceof Bittrex.Errors.BittrexRestApiError) {
+      // This is the "message" property the bittrex API returns for failures
+      console.log(e.bittexMessage)
     } else {
       console.log('some other type of error occurred', e)
     }
